@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Levantamiento de Requerimientos — Sistema de Gestión de Instalaciones Deportivas">
+  <title>Levantamiento de Requerimientos | NelSystems</title>
+
+  <!-- PWA / Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1D4ED8">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ═══ HEADER ═══════════════════════════════════════════ -->
+  <header class="wz-header">
+    <div class="wz-header__top">
+      <img src="icons/icon-64.png" alt="NelSystems" class="wz-header__logo">
+      <div class="wz-header__title">
+        NelSystems
+        <small>Levantamiento de Requerimientos</small>
+      </div>
+      <div class="wz-header__counter">Paso <span id="step-current">1</span> de <span id="step-total">5</span></div>
+    </div>
+
+    <!-- Step dots -->
+    <div class="wz-steps" id="wz-steps">
+      <div class="wz-step-dot is-active" data-step="0" title="Bloque A">
+        <div class="wz-step-dot__circle">A</div>
+        <div class="wz-step-dot__label">Contexto</div>
+      </div>
+      <div class="wz-step-dot" data-step="1" title="Bloque B">
+        <div class="wz-step-dot__circle">B</div>
+        <div class="wz-step-dot__label">Operación</div>
+      </div>
+      <div class="wz-step-dot" data-step="2" title="Bloque C">
+        <div class="wz-step-dot__circle">C</div>
+        <div class="wz-step-dot__label">Funciones</div>
+      </div>
+      <div class="wz-step-dot" data-step="3" title="Bloque D">
+        <div class="wz-step-dot__circle">D</div>
+        <div class="wz-step-dot__label">Técnico</div>
+      </div>
+      <div class="wz-step-dot" data-step="4" title="Cierre">
+        <div class="wz-step-dot__circle">✓</div>
+        <div class="wz-step-dot__label">Cierre</div>
+      </div>
+    </div>
+
+    <div class="wz-progress">
+      <div class="wz-progress__fill" id="progress-fill" style="width:20%"></div>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN ══════════════════════════════════════════════ -->
+  <main class="wz-main">
+
+    <!-- ════════════════════════════════════════════════════ -->
+    <!-- STEP A — Contexto y Estrategia                      -->
+    <!-- ════════════════════════════════════════════════════ -->
+    <section class="wz-step is-active" id="step-a" data-step="0">
+      <div class="step-header">
+        <span class="step-header__badge">BLOQUE A</span>
+        <div class="step-header__info">
+          <h2>Contexto y Estrategia</h2>
+          <p>Información organizacional, objetivos estratégicos y gestión del cambio.</p>
+        </div>
+      </div>
+
+      <!-- A1 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>A1. Identificación de la organización</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="field">
+            <label class="field__label" for="a1_nombre">Nombre oficial de la asociación <span class="req">*</span></label>
+            <input class="field__input" type="text" id="a1_nombre" name="a1_nombre" placeholder="Nombre completo según documento legal">
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="a1_figura">Figura legal <span class="req">*</span></label>
+              <select class="field__select" id="a1_figura" name="a1_figura">
+                <option value="">Seleccionar...</option>
+                <option value="deportiva">Asociación deportiva</option>
+                <option value="cantonal">Comité cantonal</option>
+                <option value="municipalidad">Municipalidad</option>
+                <option value="privada">Organización privada</option>
+                <option value="otra">Otra</option>
+              </select>
+            </div>
+            <div class="field" id="a1_figura_otra_wrap" hidden>
+              <label class="field__label" for="a1_figura_otra">Especifique figura legal</label>
+              <input class="field__input" type="text" id="a1_figura_otra" name="a1_figura_otra" placeholder="Describa la figura legal">
+            </div>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="a1_cedula">Cédula jurídica <span class="req">*</span></label>
+              <input class="field__input" type="text" id="a1_cedula" name="a1_cedula" placeholder="X-XXXXXX-X">
+            </div>
+            <div class="field">
+              <label class="field__label" for="a1_representante">Representante legal <span class="req">*</span></label>
+              <input class="field__input" type="text" id="a1_representante" name="a1_representante" placeholder="Nombre completo">
+            </div>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="a1_anio">Año de fundación</label>
+              <input class="field__input" type="number" id="a1_anio" name="a1_anio" min="1900" max="2025" placeholder="Ej: 1998">
+            </div>
+            <div class="field">
+              <label class="field__label" for="a1_num_personas">Personas que administran hoy</label>
+              <input class="field__input" type="number" id="a1_num_personas" name="a1_num_personas" min="1" placeholder="Cantidad">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="a1_historia">Breve historia operativa</label>
+            <textarea class="field__textarea" id="a1_historia" name="a1_historia" rows="3" placeholder="Resuman el origen, evolución y situación actual de la organización..."></textarea>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="a1_roles">Descripción de roles del personal administrativo</label>
+            <textarea class="field__textarea" id="a1_roles" name="a1_roles" rows="3" placeholder="Ej: Coordinador general (1) — gestiona reservas y cobros; Encargado de campo (2) — supervisión diaria..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- A2 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>A2. Objetivos estratégicos</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="field">
+            <label class="field__label" for="a2_problema">En una frase, ¿qué problema central debe resolver este sistema? <span class="req">*</span></label>
+            <input class="field__input" type="text" id="a2_problema" name="a2_problema" placeholder="Ej: Eliminar la gestión manual de reservas que genera errores y pérdida de ingresos.">
+          </div>
+
+          <div class="info-box">Definan los <strong>3 objetivos más importantes</strong> para los primeros 6 meses de operación.</div>
+          <div class="field">
+            <label class="field__label" for="a2_obj1">Objetivo 1 <span class="req">*</span></label>
+            <textarea class="field__textarea" id="a2_obj1" name="a2_obj1" rows="2" placeholder="Describe el primer objetivo..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="a2_obj2">Objetivo 2</label>
+            <textarea class="field__textarea" id="a2_obj2" name="a2_obj2" rows="2" placeholder="Describe el segundo objetivo..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="a2_obj3">Objetivo 3</label>
+            <textarea class="field__textarea" id="a2_obj3" name="a2_obj3" rows="2" placeholder="Describe el tercer objetivo..."></textarea>
+          </div>
+
+          <div class="info-box">¿Cómo sabrán que el proyecto fue exitoso? Definan <strong>3 indicadores medibles</strong>.</div>
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="a2_ind1">Indicador 1 <span class="req">*</span></label>
+              <input class="field__input" type="text" id="a2_ind1" name="a2_ind1" placeholder="Ej: Reducir tiempo administrativo en 40%">
+            </div>
+            <div class="field">
+              <label class="field__label" for="a2_ind2">Indicador 2</label>
+              <input class="field__input" type="text" id="a2_ind2" name="a2_ind2" placeholder="Ej: Aumentar ocupación de canchas en 25%">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="a2_ind3">Indicador 3</label>
+            <input class="field__input" type="text" id="a2_ind3" name="a2_ind3" placeholder="Ej: Reducir morosidad en 30%">
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="a2_costo_no_hacer">¿Qué pasa si NO hacen este proyecto? ¿Cuál es el costo de no hacer nada?</label>
+            <textarea class="field__textarea" id="a2_costo_no_hacer" name="a2_costo_no_hacer" rows="3" placeholder="Describan el impacto operativo, económico y reputacional de mantener el status quo..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- A3 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>A3. Stakeholders y gestión del cambio</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="field">
+            <label class="field__label" for="a3_apoyan">¿Quiénes apoyan activamente este proyecto dentro de la organización?</label>
+            <textarea class="field__textarea" id="a3_apoyan" name="a3_apoyan" rows="2" placeholder="Nombres, cargos y nivel de compromiso..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="a3_resistencia">¿Quiénes podrían resistirse al cambio y por qué?</label>
+            <textarea class="field__textarea" id="a3_resistencia" name="a3_resistencia" rows="2" placeholder="Identifiquen actores y razones de posible resistencia..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="a3_capacitacion">¿Cómo se capacitará al personal interno y a los usuarios finales?</label>
+            <textarea class="field__textarea" id="a3_capacitacion" name="a3_capacitacion" rows="2" placeholder="Modalidad (presencial, virtual, manual), responsable, tiempo estimado..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="a3_aprobaciones">¿Hay decisiones que requieran aprobación de junta directiva u otra instancia? ¿Con qué frecuencia se reúnen?</label>
+            <textarea class="field__textarea" id="a3_aprobaciones" name="a3_aprobaciones" rows="2" placeholder="Tipo de decisión, instancia aprobadora, periodicidad de reuniones..."></textarea>
+          </div>
+        </div>
+      </div>
+    </section><!-- /step-a -->
+
+
+    <!-- ════════════════════════════════════════════════════ -->
+    <!-- STEP B — Operación Actual                           -->
+    <!-- ════════════════════════════════════════════════════ -->
+    <section class="wz-step" id="step-b" data-step="1">
+      <div class="step-header">
+        <span class="step-header__badge">BLOQUE B</span>
+        <div class="step-header__info">
+          <h2>Operación Actual — "Como está hoy"</h2>
+          <p>Volumen, inventario de instalaciones, procesos, herramientas y puntos de dolor.</p>
+        </div>
+      </div>
+
+      <!-- B1 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>B1. Volumen y dimensionamiento</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="fields-row fields-row--3">
+            <div class="field">
+              <label class="field__label" for="b1_reservas_semana">Reservas/alquileres por semana (normal)</label>
+              <input class="field__input" type="number" id="b1_reservas_semana" name="b1_reservas_semana" min="0" placeholder="0">
+            </div>
+            <div class="field">
+              <label class="field__label" for="b1_reservas_alta">Reservas en temporada alta</label>
+              <input class="field__input" type="number" id="b1_reservas_alta" name="b1_reservas_alta" min="0" placeholder="0">
+            </div>
+            <div class="field">
+              <label class="field__label" for="b1_usuarios_mes">Usuarios distintos por mes</label>
+              <input class="field__input" type="number" id="b1_usuarios_mes" name="b1_usuarios_mes" min="0" placeholder="0">
+            </div>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="b1_horas_pico">Horas y días pico</label>
+              <textarea class="field__textarea" id="b1_horas_pico" name="b1_horas_pico" rows="2" placeholder="Ej: Viernes 6-10pm, Sábados y domingos todo el día..."></textarea>
+            </div>
+            <div class="field">
+              <label class="field__label" for="b1_horas_bajas">Horas y días más bajos</label>
+              <textarea class="field__textarea" id="b1_horas_bajas" name="b1_horas_bajas" rows="2" placeholder="Ej: Lunes a miércoles en la mañana..."></textarea>
+            </div>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="b1_ingreso_alquileres">Ingreso mensual aproximado por alquileres (₡)</label>
+              <input class="field__input" type="number" id="b1_ingreso_alquileres" name="b1_ingreso_alquileres" min="0" placeholder="0">
+            </div>
+            <div class="field">
+              <label class="field__label" for="b1_ingreso_eventos">Ingreso mensual por torneos / eventos (₡)</label>
+              <input class="field__input" type="number" id="b1_ingreso_eventos" name="b1_ingreso_eventos" min="0" placeholder="0">
+            </div>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="b1_cancelaciones">% de reservas que se cancelan o no se presentan</label>
+              <div class="range-group">
+                <input type="range" id="b1_cancelaciones" name="b1_cancelaciones" min="0" max="100" value="0"
+                  oninput="document.getElementById('b1_cancelaciones_val').textContent = this.value + '%'">
+                <span class="range-val" id="b1_cancelaciones_val">0%</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="b1_morosidad">Nivel de morosidad actual</label>
+              <textarea class="field__textarea" id="b1_morosidad" name="b1_morosidad" rows="2" placeholder="Describan el % estimado y cómo lo manejan actualmente..."></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B2 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>B2. Inventario de instalaciones</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="info-box">Agreguen una fila por cada instalación disponible.</div>
+          <div class="dyn-table-wrap">
+            <table class="dyn-table" id="tbl-instalaciones">
+              <thead>
+                <tr>
+                  <th>Instalación</th>
+                  <th>Cant.</th>
+                  <th>Capacidad</th>
+                  <th>Horario</th>
+                  <th>Ilum. nocturna</th>
+                  <th>Camerinos</th>
+                  <th>Graderías</th>
+                  <th>Parqueo</th>
+                  <th>Acceso discap.</th>
+                  <th>Reglas especiales</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbody-instalaciones">
+                <tr>
+                  <td><input type="text" name="inst_nombre[]" placeholder="Ej: Cancha fútbol"></td>
+                  <td><input type="number" name="inst_cant[]" min="1" value="1" style="width:50px"></td>
+                  <td><input type="text" name="inst_cap[]" placeholder="Ej: 22 personas"></td>
+                  <td><input type="text" name="inst_horario[]" placeholder="7am-10pm"></td>
+                  <td>
+                    <select name="inst_ilum[]">
+                      <option value="si">Sí</option>
+                      <option value="no">No</option>
+                      <option value="parcial">Parcial</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="inst_cam[]">
+                      <option value="si">Sí</option>
+                      <option value="no">No</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="inst_grad[]">
+                      <option value="si">Sí</option>
+                      <option value="no">No</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="inst_parqueo[]">
+                      <option value="si">Sí</option>
+                      <option value="no">No</option>
+                      <option value="limitado">Limitado</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="inst_discap[]">
+                      <option value="si">Sí</option>
+                      <option value="no">No</option>
+                      <option value="parcial">Parcial</option>
+                    </select>
+                  </td>
+                  <td><input type="text" name="inst_reglas[]" placeholder="Ej: Sin tacos"></td>
+                  <td><button type="button" class="btn-del-row" title="Eliminar fila">✕</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="dyn-table__actions">
+            <button type="button" class="btn-add-row" data-table="instalaciones">+ Agregar instalación</button>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="b2_compartidas">¿Existen instalaciones compartidas con otras organizaciones o de uso comunal? Describan los acuerdos.</label>
+            <textarea class="field__textarea" id="b2_compartidas" name="b2_compartidas" rows="3" placeholder="Organización, instalación, horarios acordados, condiciones..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- B3 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>B3. Procesos actuales — "Un día en la vida"</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="field">
+            <label class="field__label" for="b3_reserva">Proceso de reserva paso a paso</label>
+            <span class="field__hint">Desde que el usuario solicita una cancha hasta que la utiliza. Incluyan actores, herramientas y tiempos.</span>
+            <textarea class="field__textarea" id="b3_reserva" name="b3_reserva" rows="4" placeholder="Paso 1: El usuario llama por WhatsApp al administrador... Paso 2: El admin consulta en Excel si hay disponibilidad..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="b3_maniana">Una mañana típica del administrador</label>
+            <span class="field__hint">¿Qué hace al llegar? ¿Qué interrupciones recibe? ¿Qué tareas le toman más tiempo?</span>
+            <textarea class="field__textarea" id="b3_maniana" name="b3_maniana" rows="3" placeholder="Al llegar revisa el WhatsApp con mensajes de la noche anterior..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="b3_cobros">Cobros y cierre de caja</label>
+            <span class="field__hint">¿Cómo se cobra, se registra y se cierra un día de operación?</span>
+            <textarea class="field__textarea" id="b3_cobros" name="b3_cobros" rows="3" placeholder="Los cobros se hacen en efectivo o SINPE. Al final del día se suma en papel..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="b3_conflictos">Manejo del último conflicto serio con una reserva</label>
+            <span class="field__hint">Sobreventa, cancelación, daño. ¿Cómo se resolvió?</span>
+            <textarea class="field__textarea" id="b3_conflictos" name="b3_conflictos" rows="3" placeholder="El mes pasado se asignó la cancha 2 a dos equipos a la misma hora porque..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="b3_mantenimiento">Mantenimiento e incidencias</label>
+            <span class="field__hint">¿Cómo se reporta y atiende hoy un daño en una cancha?</span>
+            <textarea class="field__textarea" id="b3_mantenimiento" name="b3_mantenimiento" rows="2" placeholder="El encargado avisa por WhatsApp al coordinador, quien llama al técnico..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- B4 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>B4. Herramientas actuales</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="field">
+            <label class="field__label" for="b4_herramientas">¿Qué herramientas usan hoy? Describan para qué sirve cada una.</label>
+            <textarea class="field__textarea" id="b4_herramientas" name="b4_herramientas" rows="3" placeholder="Excel — control de reservas; WhatsApp — comunicación con usuarios; Agenda física — registro de pagos; ..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="b4_duplicacion">¿Qué información se duplica entre estas herramientas?</label>
+            <textarea class="field__textarea" id="b4_duplicacion" name="b4_duplicacion" rows="2" placeholder="Los datos del cliente se escriben en WhatsApp y luego se copian a Excel manualmente..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="b4_perdida">¿Qué información se pierde o se olvida con frecuencia?</label>
+            <textarea class="field__textarea" id="b4_perdida" name="b4_perdida" rows="2" placeholder="Confirmaciones verbales que luego no quedan registradas, pagos sin recibo..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- B5 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>B5. Dolores y oportunidades</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="info-box">Ordenen los <strong>5 problemas más graves</strong> del sistema actual por impacto (1 = mayor impacto).</div>
+          <div class="field">
+            <label class="field__label" for="b5_p1">#1 Problema más grave</label>
+            <textarea class="field__textarea" id="b5_p1" name="b5_p1" rows="2" placeholder="Descripción del problema y su impacto..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="b5_p2">#2 Problema</label>
+            <textarea class="field__textarea" id="b5_p2" name="b5_p2" rows="2" placeholder=""></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="b5_p3">#3 Problema</label>
+            <textarea class="field__textarea" id="b5_p3" name="b5_p3" rows="2" placeholder=""></textarea>
+          </div>
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="b5_p4">#4 Problema</label>
+              <textarea class="field__textarea" id="b5_p4" name="b5_p4" rows="2" placeholder=""></textarea>
+            </div>
+            <div class="field">
+              <label class="field__label" for="b5_p5">#5 Problema</label>
+              <textarea class="field__textarea" id="b5_p5" name="b5_p5" rows="2" placeholder=""></textarea>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="b5_errores">¿Qué errores no deberían volver a ocurrir nunca?</label>
+            <textarea class="field__textarea" id="b5_errores" name="b5_errores" rows="2" placeholder="Sobreventas, pérdida de dinero sin respaldo, conflictos por falta de información..."></textarea>
+          </div>
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="b5_tareas">Tareas que consumen más tiempo y aportan menos valor</label>
+              <textarea class="field__textarea" id="b5_tareas" name="b5_tareas" rows="2" placeholder="Ej: Responder mensajes de disponibilidad uno por uno..."></textarea>
+            </div>
+            <div class="field">
+              <label class="field__label" for="b5_quejas">Quejas más frecuentes de los usuarios</label>
+              <textarea class="field__textarea" id="b5_quejas" name="b5_quejas" rows="2" placeholder="Ej: No saben si la cancha está disponible sin llamar..."></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /step-b -->
+
+
+    <!-- ════════════════════════════════════════════════════ -->
+    <!-- STEP C — Funcionalidades Deseadas                   -->
+    <!-- ════════════════════════════════════════════════════ -->
+    <section class="wz-step" id="step-c" data-step="2">
+      <div class="step-header">
+        <span class="step-header__badge">BLOQUE C</span>
+        <div class="step-header__info">
+          <h2>Funcionalidades Deseadas</h2>
+          <p>Prioricen cada funcionalidad con el método MoSCoW: <strong>M</strong>ust · <strong>S</strong>hould · <strong>C</strong>ould · <strong>W</strong>on't</p>
+        </div>
+      </div>
+
+      <!-- Moscow legend (global) -->
+      <div class="moscow-legend">
+        <div class="moscow-legend__item"><div class="moscow-legend__dot moscow-legend__dot--m"></div><strong>M</strong> — Must have (obligatorio)</div>
+        <div class="moscow-legend__item"><div class="moscow-legend__dot moscow-legend__dot--s"></div><strong>S</strong> — Should have (deseable)</div>
+        <div class="moscow-legend__item"><div class="moscow-legend__dot moscow-legend__dot--c"></div><strong>C</strong> — Could have (opcional)</div>
+        <div class="moscow-legend__item"><div class="moscow-legend__dot moscow-legend__dot--w"></div><strong>W</strong> — Won't have (fuera de alcance)</div>
+      </div>
+
+      <!-- C1 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>C1. Gestión de reservas</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="moscow-table" id="moscow-c1"></div>
+
+          <div class="section-divider"></div>
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="c1_tiempo_min">Tiempo mínimo por reserva</label>
+              <input class="field__input" type="text" id="c1_tiempo_min" name="c1_tiempo_min" placeholder="Ej: 1 hora">
+            </div>
+            <div class="field">
+              <label class="field__label" for="c1_tiempo_max">Tiempo máximo por reserva</label>
+              <input class="field__input" type="text" id="c1_tiempo_max" name="c1_tiempo_max" placeholder="Ej: 4 horas">
+            </div>
+          </div>
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="c1_antelacion_max">Antelación máxima para reservar</label>
+              <input class="field__input" type="text" id="c1_antelacion_max" name="c1_antelacion_max" placeholder="Ej: 30 días">
+            </div>
+            <div class="field">
+              <label class="field__label" for="c1_antelacion_min">Antelación mínima para reservar</label>
+              <input class="field__input" type="text" id="c1_antelacion_min" name="c1_antelacion_min" placeholder="Ej: 2 horas">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="c1_tipos_usuario">Tipos de usuario que pueden reservar y sus privilegios</label>
+            <textarea class="field__textarea" id="c1_tipos_usuario" name="c1_tipos_usuario" rows="3" placeholder="Ej: Ligas afiliadas — hasta 30 días de anticipación; Público general — hasta 7 días; Municipalidad — sin límite..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- C2 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>C2. Tarifas y cobros</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="info-box">Construyan la <strong>matriz tarifaria completa</strong>. Agreguen una fila por cada combinación instalación/horario/usuario.</div>
+          <div class="dyn-table-wrap">
+            <table class="dyn-table" id="tbl-tarifas">
+              <thead>
+                <tr>
+                  <th>Tipo de instalación</th>
+                  <th>Horario</th>
+                  <th>Tipo de usuario</th>
+                  <th>¿Con iluminación?</th>
+                  <th>Precio (₡)</th>
+                  <th>Notas</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbody-tarifas">
+                <tr>
+                  <td><input type="text" name="tar_inst[]" placeholder="Ej: Cancha fútbol"></td>
+                  <td><input type="text" name="tar_horario[]" placeholder="Ej: 7am-6pm"></td>
+                  <td><input type="text" name="tar_usuario[]" placeholder="Ej: Público general"></td>
+                  <td>
+                    <select name="tar_ilum[]">
+                      <option value="no">Sin ilum.</option>
+                      <option value="si">Con ilum.</option>
+                    </select>
+                  </td>
+                  <td><input type="number" name="tar_precio[]" min="0" placeholder="0"></td>
+                  <td><input type="text" name="tar_notas[]" placeholder="Obs..."></td>
+                  <td><button type="button" class="btn-del-row" title="Eliminar">✕</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="dyn-table__actions">
+            <button type="button" class="btn-add-row" data-table="tarifas">+ Agregar tarifa</button>
+          </div>
+
+          <div class="section-divider"></div>
+          <div class="field">
+            <label class="field__label">Métodos de pago que aceptarán</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox" name="c2_pago" value="efectivo"><span>Efectivo</span></label>
+              <label class="check-item"><input type="checkbox" name="c2_pago" value="sinpe"><span>SINPE Móvil</span></label>
+              <label class="check-item"><input type="checkbox" name="c2_pago" value="transferencia"><span>Transferencia bancaria</span></label>
+              <label class="check-item"><input type="checkbox" name="c2_pago" value="tarjeta"><span>Tarjeta (débito/crédito)</span></label>
+              <label class="check-item"><input type="checkbox" name="c2_pago" value="pasarela"><span>Pasarela de pago en línea</span></label>
+              <label class="check-item"><input type="checkbox" name="c2_pago" value="otro"><span>Otro</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="c2_quien_valida">¿Quién valida el pago y cómo, para cada método?</label>
+            <textarea class="field__textarea" id="c2_quien_valida" name="c2_quien_valida" rows="2" placeholder="SINPE: el admin verifica captura de pantalla; Efectivo: cajero registra en sistema..."></textarea>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">¿Requieren facturación electrónica (Hacienda)? <span class="req">*</span></label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="c2_fact_si" name="c2_facturacion" value="si"><label for="c2_fact_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="c2_fact_no" name="c2_facturacion" value="no"><label for="c2_fact_no">No</label></div>
+                <div class="toggle-option"><input type="radio" id="c2_fact_futuro" name="c2_facturacion" value="futuro"><label for="c2_fact_futuro">A futuro</label></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="c2_proveedor">Proveedor de facturación actual (si aplica)</label>
+              <input class="field__input" type="text" id="c2_proveedor" name="c2_proveedor" placeholder="Nombre del proveedor o sistema">
+            </div>
+          </div>
+
+          <div class="field"><label class="field__label">Funcionalidades de cobro — prioricen con MoSCoW</label></div>
+          <div class="moscow-table" id="moscow-c2"></div>
+        </div>
+      </div>
+
+      <!-- C3 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>C3. Usuarios, roles y permisos</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="info-box">Para cada rol, definan qué acciones <strong>puede</strong> y <strong>NO puede</strong> realizar.</div>
+          <div class="dyn-table-wrap">
+            <table class="dyn-table" id="tbl-roles">
+              <thead>
+                <tr>
+                  <th>Rol</th>
+                  <th>Puede hacer</th>
+                  <th>NO puede hacer</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbody-roles">
+                <tr><td><input type="text" name="rol_nombre[]" value="Administrador general"></td><td><textarea name="rol_puede[]" rows="2" placeholder="..."></textarea></td><td><textarea name="rol_nopuede[]" rows="2" placeholder="..."></textarea></td><td><button type="button" class="btn-del-row">✕</button></td></tr>
+                <tr><td><input type="text" name="rol_nombre[]" value="Cajero"></td><td><textarea name="rol_puede[]" rows="2" placeholder="..."></textarea></td><td><textarea name="rol_nopuede[]" rows="2" placeholder="..."></textarea></td><td><button type="button" class="btn-del-row">✕</button></td></tr>
+                <tr><td><input type="text" name="rol_nombre[]" value="Encargado de cancha"></td><td><textarea name="rol_puede[]" rows="2" placeholder="..."></textarea></td><td><textarea name="rol_nopuede[]" rows="2" placeholder="..."></textarea></td><td><button type="button" class="btn-del-row">✕</button></td></tr>
+                <tr><td><input type="text" name="rol_nombre[]" value="Junta directiva"></td><td><textarea name="rol_puede[]" rows="2" placeholder="..."></textarea></td><td><textarea name="rol_nopuede[]" rows="2" placeholder="..."></textarea></td><td><button type="button" class="btn-del-row">✕</button></td></tr>
+                <tr><td><input type="text" name="rol_nombre[]" value="Usuario final"></td><td><textarea name="rol_puede[]" rows="2" placeholder="..."></textarea></td><td><textarea name="rol_nopuede[]" rows="2" placeholder="..."></textarea></td><td><button type="button" class="btn-del-row">✕</button></td></tr>
+                <tr><td><input type="text" name="rol_nombre[]" value="Árbitro / Entrenador"></td><td><textarea name="rol_puede[]" rows="2" placeholder="..."></textarea></td><td><textarea name="rol_nopuede[]" rows="2" placeholder="..."></textarea></td><td><button type="button" class="btn-del-row">✕</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="dyn-table__actions">
+            <button type="button" class="btn-add-row" data-table="roles">+ Agregar rol</button>
+          </div>
+
+          <div class="field">
+            <label class="field__label">¿Cómo se autenticarán los usuarios?</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox" name="c3_auth" value="email"><span>Correo electrónico y contraseña</span></label>
+              <label class="check-item"><input type="checkbox" name="c3_auth" value="google"><span>Google (inicio de sesión social)</span></label>
+              <label class="check-item"><input type="checkbox" name="c3_auth" value="telefono"><span>Número de teléfono (OTP/SMS)</span></label>
+              <label class="check-item"><input type="checkbox" name="c3_auth" value="otro"><span>Otro</span></label>
+            </div>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">¿Necesitan historial de acciones (auditoría)?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="c3_audit_si" name="c3_auditoria" value="si"><label for="c3_audit_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="c3_audit_no" name="c3_auditoria" value="no"><label for="c3_audit_no">No</label></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="c3_tiempo_auditoria">¿Cuánto tiempo deben conservarse esos registros?</label>
+              <input class="field__input" type="text" id="c3_tiempo_auditoria" name="c3_tiempo_auditoria" placeholder="Ej: 2 años, 5 años...">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C4 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>C4. Reglamento y disciplina</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">¿Existe un reglamento oficial escrito?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="c4_reg_si" name="c4_reglamento" value="si"><label for="c4_reg_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="c4_reg_no" name="c4_reglamento" value="no"><label for="c4_reg_no">No</label></div>
+                <div class="toggle-option"><input type="radio" id="c4_reg_borrador" name="c4_reglamento" value="borrador"><label for="c4_reg_borrador">En borrador</label></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label">¿El usuario debe aceptar digitalmente el reglamento?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="c4_ace_registro" name="c4_aceptacion" value="registro"><label for="c4_ace_registro">Al registrarse</label></div>
+                <div class="toggle-option"><input type="radio" id="c4_ace_reserva" name="c4_aceptacion" value="reserva"><label for="c4_ace_reserva">Al reservar</label></div>
+                <div class="toggle-option"><input type="radio" id="c4_ace_ambos" name="c4_aceptacion" value="ambos"><label for="c4_ace_ambos">Ambos</label></div>
+                <div class="toggle-option"><input type="radio" id="c4_ace_no" name="c4_aceptacion" value="no"><label for="c4_ace_no">No aplica</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-box">Definan los tipos de sanción que el sistema debe registrar.</div>
+          <div class="dyn-table-wrap">
+            <table class="dyn-table" id="tbl-sanciones">
+              <thead>
+                <tr>
+                  <th>Tipo de sanción</th>
+                  <th>Aplica a</th>
+                  <th>Consecuencia</th>
+                  <th>Duración</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbody-sanciones">
+                <tr><td><input type="text" name="san_tipo[]" value="Daños a infraestructura"></td><td><input type="text" name="san_aplica[]" placeholder="Usuarios, equipos..."></td><td><input type="text" name="san_consecuencia[]" placeholder="Pago, suspensión..."></td><td><input type="text" name="san_duracion[]" placeholder="Ej: 30 días"></td><td><button type="button" class="btn-del-row">✕</button></td></tr>
+                <tr><td><input type="text" name="san_tipo[]" value="No presentarse a reserva"></td><td><input type="text" name="san_aplica[]" placeholder=""></td><td><input type="text" name="san_consecuencia[]" placeholder=""></td><td><input type="text" name="san_duracion[]" placeholder=""></td><td><button type="button" class="btn-del-row">✕</button></td></tr>
+                <tr><td><input type="text" name="san_tipo[]" value="Incumplimiento de horario"></td><td><input type="text" name="san_aplica[]" placeholder=""></td><td><input type="text" name="san_consecuencia[]" placeholder=""></td><td><input type="text" name="san_duracion[]" placeholder=""></td><td><button type="button" class="btn-del-row">✕</button></td></tr>
+                <tr><td><input type="text" name="san_tipo[]" value="Conducta inapropiada"></td><td><input type="text" name="san_aplica[]" placeholder=""></td><td><input type="text" name="san_consecuencia[]" placeholder=""></td><td><input type="text" name="san_duracion[]" placeholder=""></td><td><button type="button" class="btn-del-row">✕</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="dyn-table__actions">
+            <button type="button" class="btn-add-row" data-table="sanciones">+ Agregar sanción</button>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">¿El sistema debe bloquear automáticamente usuarios sancionados?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="c4_bloq_si" name="c4_bloqueo" value="si"><label for="c4_bloq_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="c4_bloq_no" name="c4_bloqueo" value="no"><label for="c4_bloq_no">No</label></div>
+                <div class="toggle-option"><input type="radio" id="c4_bloq_manual" name="c4_bloqueo" value="manual"><label for="c4_bloq_manual">Manual</label></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="c4_reglas_bloqueo">Reglas de bloqueo automático</label>
+              <input class="field__input" type="text" id="c4_reglas_bloqueo" name="c4_reglas_bloqueo" placeholder="Ej: Bloquear tras 2 no-shows en 30 días">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C5 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>C5. Torneos y competencias</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">¿Organizan torneos? <span class="req">*</span></label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="c5_torneo_si" name="c5_torneos" value="si"><label for="c5_torneo_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="c5_torneo_no" name="c5_torneos" value="no"><label for="c5_torneo_no">No</label></div>
+                <div class="toggle-option"><input type="radio" id="c5_torneo_futuro" name="c5_torneos" value="futuro"><label for="c5_torneo_futuro">En el futuro</label></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="c5_num_torneos">¿Cuántos al año?</label>
+              <input class="field__input" type="number" id="c5_num_torneos" name="c5_num_torneos" min="0" placeholder="0">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="c5_disciplinas">Disciplinas deportivas</label>
+            <input class="field__input" type="text" id="c5_disciplinas" name="c5_disciplinas" placeholder="Ej: Fútbol sala, baloncesto, voleibol...">
+          </div>
+          <div class="moscow-table" id="moscow-c5"></div>
+        </div>
+      </div>
+
+      <!-- C6 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>C6. Mantenimiento</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="field">
+            <label class="field__label">Tipos de mantenimiento que realizan</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox" name="c6_tipos_mant" value="preventivo"><span>Preventivo (programado periódicamente)</span></label>
+              <label class="check-item"><input type="checkbox" name="c6_tipos_mant" value="correctivo"><span>Correctivo (ante daños o fallas)</span></label>
+              <label class="check-item"><input type="checkbox" name="c6_tipos_mant" value="periodico"><span>Periódico (por calendario)</span></label>
+              <label class="check-item"><input type="checkbox" name="c6_tipos_mant" value="predictivo"><span>Predictivo (basado en indicadores)</span></label>
+            </div>
+          </div>
+          <div class="moscow-table" id="moscow-c6"></div>
+        </div>
+      </div>
+
+      <!-- C7 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>C7. Notificaciones y comunicación</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">Canales de comunicación que utilizarán</label>
+              <div class="check-group">
+                <label class="check-item"><input type="checkbox" name="c7_canales" value="correo"><span>Correo electrónico</span></label>
+                <label class="check-item"><input type="checkbox" name="c7_canales" value="whatsapp"><span>WhatsApp Business API</span></label>
+                <label class="check-item"><input type="checkbox" name="c7_canales" value="sms"><span>SMS</span></label>
+                <label class="check-item"><input type="checkbox" name="c7_canales" value="push"><span>Push (app móvil/PWA)</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="c7_costo">Costo mensual aceptable para mensajería</label>
+              <div class="input-with-unit">
+                <input type="number" id="c7_costo" name="c7_costo" min="0" placeholder="0">
+                <span>₡ / mes</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-box">Para cada evento, marquen el canal preferido.</div>
+          <div class="dyn-table-wrap">
+            <table class="notif-table">
+              <thead>
+                <tr>
+                  <th>Evento</th>
+                  <th>Correo</th>
+                  <th>WhatsApp</th>
+                  <th>SMS</th>
+                  <th>Push</th>
+                  <th>Ninguno</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Confirmación de reserva</td>
+                  <td><input type="checkbox" name="notif_conf_correo"></td>
+                  <td><input type="checkbox" name="notif_conf_wa"></td>
+                  <td><input type="checkbox" name="notif_conf_sms"></td>
+                  <td><input type="checkbox" name="notif_conf_push"></td>
+                  <td><input type="checkbox" name="notif_conf_ninguno"></td>
+                </tr>
+                <tr>
+                  <td>Recordatorio previo</td>
+                  <td><input type="checkbox" name="notif_rec_correo"></td>
+                  <td><input type="checkbox" name="notif_rec_wa"></td>
+                  <td><input type="checkbox" name="notif_rec_sms"></td>
+                  <td><input type="checkbox" name="notif_rec_push"></td>
+                  <td><input type="checkbox" name="notif_rec_ninguno"></td>
+                </tr>
+                <tr>
+                  <td>Cancelación</td>
+                  <td><input type="checkbox" name="notif_can_correo"></td>
+                  <td><input type="checkbox" name="notif_can_wa"></td>
+                  <td><input type="checkbox" name="notif_can_sms"></td>
+                  <td><input type="checkbox" name="notif_can_push"></td>
+                  <td><input type="checkbox" name="notif_can_ninguno"></td>
+                </tr>
+                <tr>
+                  <td>Pago pendiente</td>
+                  <td><input type="checkbox" name="notif_pago_correo"></td>
+                  <td><input type="checkbox" name="notif_pago_wa"></td>
+                  <td><input type="checkbox" name="notif_pago_sms"></td>
+                  <td><input type="checkbox" name="notif_pago_push"></td>
+                  <td><input type="checkbox" name="notif_pago_ninguno"></td>
+                </tr>
+                <tr>
+                  <td>Sanción aplicada</td>
+                  <td><input type="checkbox" name="notif_san_correo"></td>
+                  <td><input type="checkbox" name="notif_san_wa"></td>
+                  <td><input type="checkbox" name="notif_san_sms"></td>
+                  <td><input type="checkbox" name="notif_san_push"></td>
+                  <td><input type="checkbox" name="notif_san_ninguno"></td>
+                </tr>
+                <tr>
+                  <td>Cambio de horario</td>
+                  <td><input type="checkbox" name="notif_cam_correo"></td>
+                  <td><input type="checkbox" name="notif_cam_wa"></td>
+                  <td><input type="checkbox" name="notif_cam_sms"></td>
+                  <td><input type="checkbox" name="notif_cam_push"></td>
+                  <td><input type="checkbox" name="notif_cam_ninguno"></td>
+                </tr>
+                <tr>
+                  <td>Mantenimiento programado</td>
+                  <td><input type="checkbox" name="notif_mant_correo"></td>
+                  <td><input type="checkbox" name="notif_mant_wa"></td>
+                  <td><input type="checkbox" name="notif_mant_sms"></td>
+                  <td><input type="checkbox" name="notif_mant_push"></td>
+                  <td><input type="checkbox" name="notif_mant_ninguno"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- C8 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>C8. Reportes y analítica</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="info-box">Listen los reportes que necesitan de forma recurrente.</div>
+          <div class="dyn-table-wrap">
+            <table class="dyn-table" id="tbl-reportes">
+              <thead>
+                <tr>
+                  <th>Reporte</th>
+                  <th>Frecuencia</th>
+                  <th>Destinatario</th>
+                  <th>Formato</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbody-reportes">
+                <tr>
+                  <td><input type="text" name="rep_nombre[]" placeholder="Ej: Ingresos por cancha"></td>
+                  <td>
+                    <select name="rep_frecuencia[]">
+                      <option value="diario">Diario</option>
+                      <option value="semanal">Semanal</option>
+                      <option value="mensual" selected>Mensual</option>
+                      <option value="trimestral">Trimestral</option>
+                      <option value="anual">Anual</option>
+                      <option value="demanda">A demanda</option>
+                    </select>
+                  </td>
+                  <td><input type="text" name="rep_destinatario[]" placeholder="Ej: Junta directiva"></td>
+                  <td>
+                    <select name="rep_formato[]">
+                      <option value="pdf">PDF</option>
+                      <option value="excel">Excel</option>
+                      <option value="pantalla">Pantalla</option>
+                    </select>
+                  </td>
+                  <td><button type="button" class="btn-del-row">✕</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="dyn-table__actions">
+            <button type="button" class="btn-add-row" data-table="reportes">+ Agregar reporte</button>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="c8_dashboard">Métricas para el panel principal (dashboard)</label>
+              <textarea class="field__textarea" id="c8_dashboard" name="c8_dashboard" rows="3" placeholder="Ej: Ocupación de canchas %, ingresos del día, reservas pendientes de confirmación, morosidad..."></textarea>
+            </div>
+            <div class="field">
+              <label class="field__label" for="c8_publicos">¿Necesitan reportes públicos? ¿Cuáles y para quién?</label>
+              <textarea class="field__textarea" id="c8_publicos" name="c8_publicos" rows="3" placeholder="Ej: Tabla de posiciones de torneos visible al público, calendario de eventos..."></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /step-c -->
+
+
+    <!-- ════════════════════════════════════════════════════ -->
+    <!-- STEP D — Restricciones Técnicas                     -->
+    <!-- ════════════════════════════════════════════════════ -->
+    <section class="wz-step" id="step-d" data-step="3">
+      <div class="step-header">
+        <span class="step-header__badge">BLOQUE D</span>
+        <div class="step-header__info">
+          <h2>Restricciones Técnicas y de Proyecto</h2>
+          <p>Plataforma, integraciones, seguridad, infraestructura, presupuesto y visión a futuro.</p>
+        </div>
+      </div>
+
+      <!-- D1 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>D1. Plataforma y acceso</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="field">
+            <label class="field__label">¿Cuál es la plataforma prioritaria? <span class="req">*</span></label>
+            <div class="toggle-group">
+              <div class="toggle-option"><input type="radio" id="d1_web" name="d1_plataforma" value="web"><label for="d1_web">Web responsive</label></div>
+              <div class="toggle-option"><input type="radio" id="d1_pwa" name="d1_plataforma" value="pwa"><label for="d1_pwa">PWA (web + instalable)</label></div>
+              <div class="toggle-option"><input type="radio" id="d1_android" name="d1_plataforma" value="android"><label for="d1_android">App Android</label></div>
+              <div class="toggle-option"><input type="radio" id="d1_ios" name="d1_plataforma" value="ios"><label for="d1_ios">App iOS</label></div>
+              <div class="toggle-option"><input type="radio" id="d1_ambas" name="d1_plataforma" value="ambas"><label for="d1_ambas">Android + iOS</label></div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="d1_justificacion">Justificación según perfil de usuarios</label>
+            <textarea class="field__textarea" id="d1_justificacion" name="d1_justificacion" rows="2" placeholder="Ej: La mayoría de nuestros usuarios son mayores de 35 años y usan Android básico..."></textarea>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">Acceso desde celular vs. computadora</label>
+              <div class="range-group">
+                <span style="font-size:.75rem;color:var(--c-text-lt)">💻</span>
+                <input type="range" id="d1_pct_movil" name="d1_pct_movil" min="0" max="100" value="70"
+                  oninput="document.getElementById('d1_movil_val').textContent = this.value + '% móvil'">
+                <span class="range-val" id="d1_movil_val">70% móvil</span>
+                <span style="font-size:.75rem;color:var(--c-text-lt)">📱</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label">¿Requisitos de accesibilidad obligatorios (Ley 7600)?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="d1_acc_si" name="d1_accesibilidad" value="si"><label for="d1_acc_si">Sí, obligatorio</label></div>
+                <div class="toggle-option"><input type="radio" id="d1_acc_deseable" name="d1_accesibilidad" value="deseable"><label for="d1_acc_deseable">Deseable</label></div>
+                <div class="toggle-option"><input type="radio" id="d1_acc_no" name="d1_accesibilidad" value="no"><label for="d1_acc_no">No aplica</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label">Idiomas requeridos</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox" name="d1_idiomas" value="es" checked><span>Español</span></label>
+              <label class="check-item"><input type="checkbox" name="d1_idiomas" value="en"><span>Inglés</span></label>
+              <label class="check-item"><input type="checkbox" name="d1_idiomas" value="otro"><span>Otro</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D2 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>D2. Integraciones</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="info-box">Para cada integración, indiquen si ya tienen credenciales o relación contractual.</div>
+          <div class="field">
+            <label class="field__label" for="d2_redes">Redes sociales</label>
+            <textarea class="field__textarea" id="d2_redes" name="d2_redes" rows="2" placeholder="Ej: Facebook (publicación automática de eventos) — ya tenemos página; Instagram Stories..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="d2_web">Sitio web actual</label>
+            <textarea class="field__textarea" id="d2_web" name="d2_web" rows="2" placeholder="URL del sitio, plataforma (WordPress, etc.), integraciones deseadas..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="d2_correo">Correo institucional</label>
+            <input class="field__input" type="text" id="d2_correo" name="d2_correo" placeholder="Ej: info@asociacion.cr — plataforma: Gmail / Outlook...">
+          </div>
+        </div>
+      </div>
+
+      <!-- D3 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>D3. Seguridad y cumplimiento legal</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">¿Manejan datos de menores de edad?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="d3_menores_si" name="d3_menores" value="si"><label for="d3_menores_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="d3_menores_no" name="d3_menores" value="no"><label for="d3_menores_no">No</label></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label">¿Están registrados ante PRODHAB (Ley 8968)?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="d3_prodhab_si" name="d3_prodhab" value="si"><label for="d3_prodhab_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="d3_prodhab_no" name="d3_prodhab" value="no"><label for="d3_prodhab_no">No</label></div>
+                <div class="toggle-option"><input type="radio" id="d3_prodhab_proceso" name="d3_prodhab" value="proceso"><label for="d3_prodhab_proceso">En proceso</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">¿Requieren respaldos automáticos?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="d3_resp_si" name="d3_respaldos" value="si"><label for="d3_resp_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="d3_resp_no" name="d3_respaldos" value="no"><label for="d3_resp_no">No</label></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="d3_frecuencia_resp">Frecuencia de respaldo</label>
+              <input class="field__input" type="text" id="d3_frecuencia_resp" name="d3_frecuencia_resp" placeholder="Ej: Diario, semanal...">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="d3_almacenamiento">¿Dónde deben almacenarse los respaldos?</label>
+            <input class="field__input" type="text" id="d3_almacenamiento" name="d3_almacenamiento" placeholder="Ej: Google Drive, servidor local, AWS S3...">
+          </div>
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="d3_auditorias">¿Reciben auditorías internas o externas? ¿De quién?</label>
+              <textarea class="field__textarea" id="d3_auditorias" name="d3_auditorias" rows="2" placeholder="Ej: Auditoría anual de la municipalidad, revisión trimestral interna..."></textarea>
+            </div>
+            <div class="field">
+              <label class="field__label" for="d3_retencion">Políticas de retención y eliminación de datos</label>
+              <textarea class="field__textarea" id="d3_retencion" name="d3_retencion" rows="2" placeholder="Ej: Datos de usuarios se conservan 5 años tras última transacción..."></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D4 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>D4. Infraestructura y soporte</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="field">
+            <label class="field__label" for="d4_dominio">¿Cuentan con dominio web, hosting o servicios cloud actuales?</label>
+            <textarea class="field__textarea" id="d4_dominio" name="d4_dominio" rows="2" placeholder="Ej: dominio .cr en GoDaddy, hosting en Hostinger, sin cloud actualmente..."></textarea>
+          </div>
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">¿Tienen personal técnico interno?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="d4_tecnico_si" name="d4_personal_tecnico" value="si"><label for="d4_tecnico_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="d4_tecnico_no" name="d4_personal_tecnico" value="no"><label for="d4_tecnico_no">No</label></div>
+                <div class="toggle-option"><input type="radio" id="d4_tecnico_ext" name="d4_personal_tecnico" value="externo"><label for="d4_tecnico_ext">Soporte externo</label></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="d4_administrador">¿Quién será el administrador del sistema entregado?</label>
+              <input class="field__input" type="text" id="d4_administrador" name="d4_administrador" placeholder="Nombre y cargo de la persona responsable">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="d4_soporte">Horario de soporte técnico requerido</label>
+            <input class="field__input" type="text" id="d4_soporte" name="d4_soporte" placeholder="Ej: Lunes a sábado 7am-10pm, 24/7 para incidentes críticos...">
+          </div>
+        </div>
+      </div>
+
+      <!-- D5 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>D5. Restricciones del proyecto</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="d5_presupuesto_dev">Presupuesto para desarrollo (₡)</label>
+              <input class="field__input" type="text" id="d5_presupuesto_dev" name="d5_presupuesto_dev" placeholder="Ej: ₡5,000,000 — ₡10,000,000">
+            </div>
+            <div class="field">
+              <label class="field__label" for="d5_presupuesto_op">Presupuesto operación mensual (₡/mes)</label>
+              <input class="field__input" type="number" id="d5_presupuesto_op" name="d5_presupuesto_op" min="0" placeholder="0">
+            </div>
+          </div>
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label" for="d5_fecha">¿Cuándo necesitan el sistema operativo?</label>
+              <input class="field__input" type="date" id="d5_fecha" name="d5_fecha">
+            </div>
+            <div class="field">
+              <label class="field__label" for="d5_fecha_forzada">¿Hay una fecha forzada? (inicio de temporada, evento, plazo legal)</label>
+              <input class="field__input" type="text" id="d5_fecha_forzada" name="d5_fecha_forzada" placeholder="Ej: Inicio torneo municipal 15 de enero">
+            </div>
+          </div>
+
+          <div class="info-box"><strong>MVP en 8 semanas:</strong> Si tuvieran que lanzar en 8 semanas, ¿qué 3 funcionalidades NO pueden faltar?</div>
+          <div class="fields-row fields-row--3">
+            <div class="field">
+              <label class="field__label" for="d5_mvp1">MVP #1 <span class="req">*</span></label>
+              <input class="field__input" type="text" id="d5_mvp1" name="d5_mvp1" placeholder="Funcionalidad esencial 1">
+            </div>
+            <div class="field">
+              <label class="field__label" for="d5_mvp2">MVP #2 <span class="req">*</span></label>
+              <input class="field__input" type="text" id="d5_mvp2" name="d5_mvp2" placeholder="Funcionalidad esencial 2">
+            </div>
+            <div class="field">
+              <label class="field__label" for="d5_mvp3">MVP #3 <span class="req">*</span></label>
+              <input class="field__input" type="text" id="d5_mvp3" name="d5_mvp3" placeholder="Funcionalidad esencial 3">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D6 -->
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>D6. Visión a futuro</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">¿Planean abrir nuevas instalaciones o sedes en 2-3 años?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="d6_sedes_si" name="d6_nuevas_sedes" value="si"><label for="d6_sedes_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="d6_sedes_no" name="d6_nuevas_sedes" value="no"><label for="d6_sedes_no">No</label></div>
+                <div class="toggle-option"><input type="radio" id="d6_sedes_quizas" name="d6_nuevas_sedes" value="quizas"><label for="d6_sedes_quizas">Quizás</label></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="d6_sedes_plan">Detalles del plan de expansión</label>
+              <input class="field__input" type="text" id="d6_sedes_plan" name="d6_sedes_plan" placeholder="Ej: Nueva sede en cantón vecino para 2026">
+            </div>
+          </div>
+          <div class="fields-row">
+            <div class="field">
+              <label class="field__label">¿El sistema podría ser usado por otras asociaciones similares?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="d6_lic_si" name="d6_licencia" value="si"><label for="d6_lic_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="d6_lic_no" name="d6_licencia" value="no"><label for="d6_lic_no">No</label></div>
+                <div class="toggle-option"><input type="radio" id="d6_lic_quizas" name="d6_licencia" value="quizas"><label for="d6_lic_quizas">Quizás</label></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label">¿Tienen interés en monetizar el sistema (suscripciones, comisiones)?</label>
+              <div class="toggle-group">
+                <div class="toggle-option"><input type="radio" id="d6_mon_si" name="d6_monetizacion" value="si"><label for="d6_mon_si">Sí</label></div>
+                <div class="toggle-option"><input type="radio" id="d6_mon_no" name="d6_monetizacion" value="no"><label for="d6_mon_no">No</label></div>
+                <div class="toggle-option"><input type="radio" id="d6_mon_quizas" name="d6_monetizacion" value="quizas"><label for="d6_mon_quizas">Quizás</label></div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="d6_monetizacion_como">¿Cómo visualizan la monetización?</label>
+            <textarea class="field__textarea" id="d6_monetizacion_como" name="d6_monetizacion_como" rows="2" placeholder="Ej: Cobro mensual por asociación afiliada, comisión por reserva procesada..."></textarea>
+          </div>
+        </div>
+      </div>
+    </section><!-- /step-d -->
+
+
+    <!-- ════════════════════════════════════════════════════ -->
+    <!-- STEP 5 — Cierre de sesión                          -->
+    <!-- ════════════════════════════════════════════════════ -->
+    <section class="wz-step" id="step-close" data-step="4">
+      <div class="step-header">
+        <span class="step-header__badge">CIERRE</span>
+        <div class="step-header__info">
+          <h2>Cierre de la sesión</h2>
+          <p>Últimas preguntas para completar el levantamiento de requerimientos.</p>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-block__header">
+          <h3>Temas finales y validación</h3>
+          <span class="toggle-icon">▾</span>
+        </div>
+        <div class="section-block__body">
+          <div class="field">
+            <label class="field__label" for="cl_tema">¿Qué tema importante NO aparece en este cuestionario y deberíamos discutir?</label>
+            <textarea class="field__textarea" id="cl_tema" name="cl_tema" rows="3" placeholder="Temas adicionales que consideren relevantes para el proyecto..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="cl_documentos">¿Hay documentos que puedan compartir para complementar?</label>
+            <span class="field__hint">Reglamento, tarifario, estados financieros, planos, capturas de herramientas actuales.</span>
+            <textarea class="field__textarea" id="cl_documentos" name="cl_documentos" rows="3" placeholder="Listen los documentos disponibles y cómo los compartirán (Drive, email, etc.)..."></textarea>
+          </div>
+          <div class="field">
+            <label class="field__label" for="cl_validacion">¿Quiénes deben validar y firmar este levantamiento antes de proceder al diseño? <span class="req">*</span></label>
+            <textarea class="field__textarea" id="cl_validacion" name="cl_validacion" rows="3" placeholder="Nombres, cargos y disponibilidad de las personas que deben aprobar este documento..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completion card -->
+      <div class="section-block" style="border-color:var(--c-primary-l)">
+        <div class="section-block__body" style="background:var(--c-primary-xl);border-radius:var(--r-lg)">
+          <div style="display:flex;align-items:center;gap:12px">
+            <img src="icons/icon-64.png" alt="" style="width:48px;height:48px;border-radius:var(--r)">
+            <div>
+              <div style="font-weight:700;color:var(--c-primary-h);font-size:.95rem">NelSystems</div>
+              <div style="font-size:.78rem;color:var(--c-text-lt)">Levantamiento de Requerimientos — Sistema de Gestión de Instalaciones Deportivas</div>
+            </div>
+          </div>
+          <p style="font-size:.82rem;color:var(--c-text-md);line-height:1.6;margin-top:8px">
+            Al generar el PDF, se descargará un documento completo con todas las respuestas ingresadas, listo para revisión, firma y archivo. El progreso también queda guardado en este navegador.
+          </p>
+        </div>
+      </div>
+    </section><!-- /step-close -->
+
+  </main><!-- /wz-main -->
+
+
+  <!-- ═══ FOOTER NAV ════════════════════════════════════════ -->
+  <footer class="wz-footer">
+    <button class="btn btn-secondary" id="btn-prev" disabled>← Anterior</button>
+    <span class="save-status" id="save-status">Guardado automáticamente</span>
+    <button class="btn btn-primary" id="btn-next">Siguiente →</button>
+    <button class="btn btn-success" id="btn-submit" hidden>↓ Generar PDF</button>
+  </footer>
+
+</div><!-- /#app -->
+
+<!-- jsPDF + autoTable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
